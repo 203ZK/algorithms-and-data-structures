@@ -1,3 +1,6 @@
+---
+title: "Chapter 5: Sorting"
+---
 ### Introduction
 
 Recall that for binary search to work, the array must be sorted—but *how* does one sort an array? How long does it take (and on what kinds of inputs)? What are the properties of each sorting algorithm?

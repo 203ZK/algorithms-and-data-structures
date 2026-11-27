@@ -1,3 +1,6 @@
+---
+title: "Chapter 4: Peak Finding"
+---
 ### Introduction
 
 In this chapter, we discuss the problem of finding a peak within an array (be it 1-dimensional or 2-dimensional). More precisely, given an array `A[1..n]`, we say that an element `A[i]` is a **peak** if it is greater than or equal to its adjacent neighbours, i.e., one of the following statements is true:

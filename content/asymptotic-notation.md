@@ -1,3 +1,6 @@
+---
+title: "Chapter 1: Asymptotic Notation"
+---
 ### Introduction
 
 Given an algorithm (on a particular data structure), we are interested in how "resource intensive" the algorithm "runs"; analyses of this nature are referred to as **algorithmic analysis**. Even within this broad definition, there are several ways in which we can perform such analyses, for example:

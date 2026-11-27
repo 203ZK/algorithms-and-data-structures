@@ -1,3 +1,6 @@
+---
+title: "Chapter 2: Invariants"
+---
 ### Introduction
 
 Before an algorithm or a data structure (DS) is efficient, it should **work**; *correctness* should be the first order of business. But how do we do that? This short chapter introduces the concept of an **invariant**—a "principle" that an algorithm or a DS should always adhere to so that we can *prove* that it behaves as intended.

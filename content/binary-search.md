@@ -1,3 +1,6 @@
+---
+title: "Chapter 3: Binary Search"
+---
 ### Introduction
 
 A **search problem** is the task of looking for a particular item in a search space, which can be represented using data structures like trees or graphs. In its simplest form, we want to search for an element in an *array*. In the first half of this chapter, we consider searching for an element `key` in an **sorted** (non-decreasing) array `A[1..n]`, returning its (leftmost) index if it exists, and returning `-1` otherwise.
