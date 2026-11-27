@@ -34,13 +34,11 @@ We can use the following loop invariant on lines 4 to 6:
 
 Now, we can perform the three checks on our invariant:
 
-1. **Initialisation**: Prior to the first iteration of the loop, `maxNum` is set to `A[1]`. Since there is only one element in the subarray `A[1..1]`, `maxNum` holds the largest (and only) value of that subarray.
-
+1. **Initialisation**: Prior to the first iteration of the loop, `maxNum` is set to `A[1]`. Since there is only one element in the subarray `A[1..1]`, `maxNum` holds the largest (and only) value of that subarray.<br>
 2. **Maintenance**: Suppose that at the start of the `k`-th iteration, `maxNum` holds the largest value of the subarray `A[1..k]`. Now we want to show that by the end of the `k`-th iteration (i.e., by the start of the `k+1`-th iteration), `maxNum` holds the largest value of the subarray `A[1..k+1]`. There are two cases here:
 	- If `A[k+1]` is indeed the largest element seen so far, then the comparison on line 5 is true, and `maxNum` is updated to hold `A[k+1]` instead.
 	- Otherwise, the largest element of `A[1..k+1]` is in `A[1..k]` already, and by our assumption (i.e., the inductive hypothesis), we already have that `maxNum` holds that value.
-	In either case, `maxNum` has been shown to hold the largest value of the subarray by the end of the `k`-th iteration.
-
+	- In either case, `maxNum` has been shown to hold the largest value of the subarray by the end of the `k`-th iteration.<br>
 3. **Termination**: By the end of the `n-1`-th iteration (since the loop starts from `i = 2`), `maxNum` holds the largest value of the subarray `A[1..n]`, which is the original array `A` itself. Thus, our invariant has ensured that `FindMax` indeed does what we want it to do.
 
 The point of this example is to illustrate how a loop invariant can be used to prove (or at least provide a sanity check) that our algorithm works *correctly*. We will encounter more complicated invariants in the upcoming chapters, so be sure that you have a firm grasp of this notion first!
@@ -69,8 +67,7 @@ In this example, we can use the following invariant:
 >[!quote] Invariant for `FindMaxRec`
 >Each call to `FindMaxRec(A, start, end)` returns the largest value in the subarray `A[start..end]`.
 
-1. **Base case(s)**: The invariant is held at the base case when `start == end`, since the subarray `A[start..end]` contains a single element which is `A[start]`, so it is also the largest element of that subarray.
-
+1. **Base case(s)**: The invariant is held at the base case when `start == end`, since the subarray `A[start..end]` contains a single element which is `A[start]`, so it is also the largest element of that subarray.<br>
 2. **Recursive calls**: The recursive calls on lines 6 and 7 partition `A[start..end]` into two subarrays, `A[start..mid]` and `A[mid+1..end]`. Since each element in `A[start..end]` must belong to either of these new subarrays, then in particular, the largest element must also be in either one of them. By the inductive hypothesis, `leftMax` and `rightMax` contain the largest elements in their respective subarrays, at least one of which must be the overall largest element. By taking the greater of them on line 9, the original call returns that element.
 
 ---

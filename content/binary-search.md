@@ -3,7 +3,7 @@ title: "Chapter 3: Binary Search"
 ---
 ### Introduction
 
-A **search problem** is the task of looking for a particular item in a search space, which can be represented using data structures like trees or graphs. In its simplest form, we want to search for an element in an *array*. In the first half of this chapter, we consider searching for an element `key` in an **sorted** (non-decreasing) array `A[1..n]`, returning its (leftmost) index if it exists, and returning `-1` otherwise.
+A **search problem** is the task of looking for a particular item in a search space, which can be represented using data structures like trees or graphs. In its simplest form, we want to search for an element in an *array*. In this chapter, we consider searching for an element `key` in an **sorted** (non-decreasing) array `A[1..n]`, returning its (leftmost) index if it exists, and returning `-1` otherwise.
 
 A naïve solution is known as **linear search**, which involves iterating through the array from start to end, stopping the moment the current element equals `key`, and returning `-1` by the end of the loop:
 
@@ -23,8 +23,8 @@ There can be at most $n$ iterations of the loop, where each iteration takes $O(1
 **Binary search** can be used to search for a particular element (called the `key`) in a sorted array `A`—the keyword "sorted" is crucial here! It works as follows:
 
 1. Check whether the `key` we are looking for is smaller than or equal to the middle element, `A[n/2]`.
-2. If it is, recursively check the lower half of `A`.
-3. Otherwise, if the middle element is larger than `key`, recursively check the upper half of `A`.
+2. If it is, check the lower half of `A`.
+3. Otherwise, if the middle element is larger than `key`, check the upper half of `A`.
 
 The pseudocode is as such:
 
@@ -68,12 +68,10 @@ What invariant can we use to prove that our algorithm works as intended? Conside
 
 We verify this invariant using the three steps mentioned in the previous chapter:
 
-1. **Initialisation**: Prior to the first iteration of the loop, we have `start = 1` and `end = n`. Since `A` is the same as `A[1..n]`, then if `key` exists in `A`, we already have that `key` exists in `A[start..end]`.
-
+1. **Initialisation**: Prior to the first iteration of the loop, we have `start = 1` and `end = n`. Since `A` is the same as `A[1..n]`, then if `key` exists in `A`, we already have that `key` exists in `A[start..end]`.<br>
 2. **Maintenance**: Suppose `key` exists in `A[start..end]`. Partitioning it into its two halves `A[start..mid]` and `A[mid+1..n]`, the `key` must exist in one of the halves:
 	1. If `key <= A[mid]`, then it cannot exist in the upper half thanks to `A`'s being sorted. Therefore, `key` must exist in the lower half, in `A[start..mid]`. (`key` being at `A[mid]` itself is a possibility, so we should include `A[mid]` in this lower half.) By setting `end = mid` on line 8, we set up `start` and `end` to indicate this new range. 
-	2. Otherwise, if `key > A[mid]`, then it cannot exist in the lower half, once again thanks to `A`'s being sorted. Therefore, `key` must exist in the upper half, in `A[mid+1..n]`. (This time, `key` being at `A[mid]` itself is *not* a possibility since the condition is a strict inequality, so we should *exclude* `A[mid]` in this upper half.) By setting `start = mid + 1` on line 10, we set up the appropriate bounds.
-
+	2. Otherwise, if `key > A[mid]`, then it cannot exist in the lower half, once again thanks to `A`'s being sorted. Therefore, `key` must exist in the upper half, in `A[mid+1..n]`. (This time, `key` being at `A[mid]` itself is *not* a possibility since the condition is a strict inequality, so we should *exclude* `A[mid]` in this upper half.) By setting `start = mid + 1` on line 10, we set up the appropriate bounds.<br>
 3. **Termination**: By the end of the loop, we have that `start == end`$\textcolor{red}{^*}$. Then, if `key` exists in `A[start..end]` (i.e., `key` equals `A[start]` itself), then we should return `start`; otherwise, we return `-1`, as per line 12.
 
 $\textcolor{red}{^*}$ *Food for thought*: Why is it not possible for `start > end` upon termination?
@@ -190,3 +188,5 @@ $\textcolor{red}{^*}$ *Food for thought*: Why is it not possible for `start <= e
 ### Summary
 
 Binary search allows us to search for an element in an array that has a monotonic property with respect to a predicate in $O(\log n)$ time. Its key invariant is that the element being searched for, if it exists, must exist within the range `A[start..end]`; this invariant can also be used to help derive the inequalities to be used in its implementation.
+
+Binary search can also be extended to solve problems involving arrays with a monotonic property with respect to a predicate.

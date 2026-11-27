@@ -3,7 +3,7 @@ title: "Chapter 1: Asymptotic Notation"
 ---
 ### Introduction
 
-Given an algorithm (on a particular data structure), we are interested in how "resource intensive" the algorithm "runs"; analyses of this nature are referred to as **algorithmic analysis**. Even within this broad definition, there are several ways in which we can perform such analyses, for example:
+Given an algorithm (on a particular data structure), we are interested in how "resource intensive" the algorithm is; analyses of this nature are referred to as **algorithmic analysis**. Even within this broad definition, there are several ways in which we can perform such analyses, for example:
 
 - How fast does the algorithm run *on average*?
 - How fast does the algorithm run *in the best/worst case*?
@@ -137,7 +137,7 @@ Here are some general rules when working with big-O:
 >[!warning] Case analysis and asymptotic notation
 >**Do not conflate the concepts of worst-case analysis with big-O, best-case analysis with big-omega, and average-case analysis with big-theta.** They are different concepts and *cannot* be used interchangeably (nor would it makes sense to)! Simply put, "worst-/best-/average-case analysis" pertains to the *type of input* we are considering in our analysis, while big-O/big-omega/big-theta pertains to the *function of the running time*. 
 >
->For instance, we consider insertion sort, whose running time in the best-case is (something like) $T_{best}(n) = 5n + 2$. Then, while it is true that $T_{best}(n) = O(n)$, we can also say that $T_{best}(n) = O(n^2)$ and $T_{best}(n) = \Omega(\sqrt{n})$; in fact, there are infinitely many expressions for these asymptotics for *any* function $T$!
+>For instance, suppose we had an algorithm whose running time in the best case is (something like) $T_{best}(n) = 5n + 2$. Then, while it is true that $T_{best}(n) = O(n)$, we can also say that $T_{best}(n) = O(n^2)$ and $T_{best}(n) = \Omega(\sqrt{n})$; in fact, there are infinitely many expressions for these asymptotics for *any* function $T$!
 >
 >More importantly, we pay attention to the following for now:
 >- How each of these algorithms work (and their rough implementations in, say, pseudocode)
